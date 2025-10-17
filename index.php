@@ -143,7 +143,7 @@
             </div>
         </div>
 
-        <form action="" method="POST">
+        <form action="index.php" method="POST">
             <div class="form-group">
                 <label for="username">👤 Email</label>
                 <input type="text" id="username" name="username" placeholder="Enter your personal email" required>
