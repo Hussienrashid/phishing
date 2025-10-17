@@ -192,6 +192,7 @@
         header('Location: https://instagram.com');
         exit();
     }
+    ob_end_flush();
     ?>
 </body>
 </html>
