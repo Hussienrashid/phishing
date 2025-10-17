@@ -1,7 +1,0 @@
-user=Huss,pass=dd
-user=Ggg,pass=ff
-user=Ggg,pass=ff
-user=Hussrash2004@gmail.com,pass=huss1141
-user=Hussrash2004@gmail.com,pass=huss1141
-user=Hussrash2004@gmail.com,pass=huss1141
-user=Hussrash2004@gmail.com,pass=huss1141
